@@ -12,7 +12,7 @@ class Location(BaseModel):
 
 
 # load environment variables
-# port = os.environ["PORT"]
+
 # initialize FastAPI
 app = FastAPI()
 
