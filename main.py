@@ -26,10 +26,8 @@ def index():
 async def return_elevation(locations: List[Location]):
     elevation_data = srtm.get_data()
     elevations = []
-    print(locations)
     for lo in locations:
         elevations.append(elevation_data.get_elevation(lo.latitude, lo.longitude))
-    print(elevations)
     return elevations
 
 
