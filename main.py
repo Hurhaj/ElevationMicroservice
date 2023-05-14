@@ -10,7 +10,8 @@ class Location(BaseModel):
     latitude: float
     longitude: float
 
-
+class Elevations(BaseModel):
+    eleva: List[float]
 # load environment variables
 
 # initialize FastAPI
@@ -19,7 +20,7 @@ app = FastAPI()
 
 @app.get("/")
 def index():
-    return {"data": "Microservice elevation ran successfully -version 0.0.1"}
+    return {"data": "Microservice elevation ran successfully -version 0.0.2"}
 
 
 @app.post("/elevation")
@@ -28,7 +29,7 @@ async def return_elevation(locations: List[Location]):
     elevations = []
     for lo in locations:
         elevations.append(elevation_data.get_elevation(lo.latitude, lo.longitude))
-    return elevations
+    return Elevations(eleva=elevations)
 
 
 if __name__ == "__main__":
